@@ -1,6 +1,7 @@
 package com.demo.ecommerce.business.concretes;
 
 import com.demo.ecommerce.business.abstracts.CategoryService;
+import com.demo.ecommerce.business.requests.CreateNewCategoryRequests;
 import com.demo.ecommerce.business.requests.UpdateCategoryRequests;
 import com.demo.ecommerce.business.responses.GetAllCategoriesResponse;
 import com.demo.ecommerce.business.responses.GetByIdCategoryResponse;
@@ -43,5 +44,16 @@ public class CategoryManager implements CategoryService {
     public void updateCategory(UpdateCategoryRequests updateCategoryRequests) {
         Category category = this.modelMapperService.forRequests().map(updateCategoryRequests, Category.class);
         this.categoryRepository.save(category);
+    }
+
+    @Override
+    public void createNewCategory(CreateNewCategoryRequests createNewCategoryRequests) {
+        Category category = this.modelMapperService.forRequests().map(createNewCategoryRequests, Category.class);
+        this.categoryRepository.save(category);
+    }
+
+    @Override
+    public void deleteCategory(int id) {
+        this.categoryRepository.deleteById(id);
     }
 }
