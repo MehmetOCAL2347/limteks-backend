@@ -2,6 +2,7 @@ package com.demo.ecommerce.business.concretes;
 
 import com.demo.ecommerce.business.abstracts.CategoryService;
 import com.demo.ecommerce.business.responses.GetAllCategoriesResponse;
+import com.demo.ecommerce.business.responses.GetByIdCategoryResponse;
 import com.demo.ecommerce.core.utilities.mappers.ModelMapperService;
 import com.demo.ecommerce.dataAccess.CategoryRepository;
 import com.demo.ecommerce.entities.concretes.Category;
@@ -28,5 +29,12 @@ public class CategoryManager implements CategoryService {
                 .collect(Collectors.toList());
 
         return categoriesResponses;
+    }
+
+    @Override
+    public GetByIdCategoryResponse getByIdCategory(int id) {
+        Category category = this.categoryRepository.findById(id).orElseThrow();
+        GetByIdCategoryResponse response = this.modelMapperService.forResponse().map(category, GetByIdCategoryResponse.class);
+        return response;
     }
 }
