@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,5 +24,8 @@ public class Guarentee {
 
     @Column(name = "duration")
     private int duration;
+
+    @OneToMany(mappedBy = "guarentee")
+    private List<Product> products;
 
 }

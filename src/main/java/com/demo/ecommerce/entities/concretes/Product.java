@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,5 +24,27 @@ public class Product {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "guarentee_id")
+    private Guarentee guarentee;
+
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    private Image image;
+
+    @OneToMany(mappedBy = "product")
+    private List<BulletPoint> bulletPoints;
+
+    @OneToMany(mappedBy = "product")
+    private List<Content> contents;
+
+    @ManyToOne
+    @JoinColumn(name = "collection_id")
+    private Collection collection;
 
 }

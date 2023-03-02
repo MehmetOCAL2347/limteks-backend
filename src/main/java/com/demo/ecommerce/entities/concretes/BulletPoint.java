@@ -20,4 +20,8 @@ public class BulletPoint {
     @Column(name = "description")
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
 }

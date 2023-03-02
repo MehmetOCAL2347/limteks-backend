@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,4 +30,14 @@ public class Content {
 
     @Column(name = "depth") // derinlik
     private double depth;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    @OneToMany(mappedBy = "content")
+    private List<Color> colors;
+
+    @OneToMany(mappedBy = "content")
+    private List<Material> materials;
 }

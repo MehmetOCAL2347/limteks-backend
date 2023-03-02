@@ -20,4 +20,8 @@ public class SubImage {
     @Column(name = "imageUrl")
     private String imageUrl;
 
+    @ManyToOne
+    @JoinColumn(name = "image_id")
+    private Image image;
+
 }

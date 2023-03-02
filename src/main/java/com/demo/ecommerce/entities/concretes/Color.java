@@ -20,4 +20,8 @@ public class Color {
     @Column(name = "name")
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "content_id")
+    private Content content;
+
 }

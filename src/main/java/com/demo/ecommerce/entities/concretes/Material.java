@@ -18,4 +18,8 @@ public class Material {
 
     @Column(name = "type")
     private String type;
+
+    @ManyToOne
+    @JoinColumn(name = "content_id")
+    private Content content;
 }
